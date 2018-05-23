@@ -3,14 +3,14 @@ guid: 398d57b0280c0604cbc711c16e7067ab
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Bld_Tom
-    100002: //RootNode
-    400000: Bld_Tom
-    400002: //RootNode
-    2100000: Bld_TomMat
-    2300000: Bld_Tom
-    3300000: Bld_Tom
-    4300000: Bld_Tom
+    100000: //RootNode
+    100002: default
+    400000: //RootNode
+    400002: default
+    2100000: defaultMat
+    2300000: default
+    3300000: default
+    4300000: default
   externalObjects: {}
   materials:
     importMaterials: 1
