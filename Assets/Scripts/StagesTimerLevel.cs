@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StagesTimerLevel : MonoBehaviour {
+public class StagesTimerLevel : MonoBehaviour
+{
 
     public GameObject[] StagesObject;
     public float[] StagesTime;
@@ -13,38 +14,50 @@ public class StagesTimerLevel : MonoBehaviour {
 
     private float StartTime = 0;
     private float TimeLevel;
-    private int StageLevel = 1;
+    private int StageLevel = 0;
 
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         //StartTime = Time.time;
-	}
+    }
 
     // Update is called once per frame
-     void Update ()
+    void Update()
     {
-        if (StartTime == 0)
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                StartTime = Time.time;
-                backgroundSound.Play();
-            }
+            DeactiveStages();
+            StageLevel = 0;
+            StartTime = Time.time;
+            backgroundSound.Stop();
+            backgroundSound.Play();
+        }
+        else if (StartTime == 0)
+        {
             return;
         }
-           TimeLevel = Time.time - StartTime;
-            if (StageLevel < TotalStages)
+        TimeLevel = Time.time - StartTime;
+        if (StageLevel < TotalStages)
+        {
+            if (StagesTime[StageLevel] <= TimeLevel)
             {
-                if (StagesTime[StageLevel] <= TimeLevel)
-                {
-                    StagesObject[StageLevel].SetActive(true);
- /*               if (StageLevel == 11)
-                {
-                    seaAnimation.Play("Stage12");
-                }*/
-                    StageLevel++;
-                 }
+                StagesObject[StageLevel].SetActive(true);
+                /*               if (StageLevel == 11)
+                               {
+                                   seaAnimation.Play("Stage12");
+                               }*/
+                StageLevel++;
             }
-     }
- }
+        }
+    }
+
+    private void DeactiveStages()
+    {
+        foreach (var stageObj in StagesObject)
+        {
+            stageObj.SetActive(false);
+        }
+    }
+}
