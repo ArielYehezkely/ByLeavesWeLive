@@ -13,6 +13,7 @@ public class WorldPointController : MonoBehaviour {
 	public Transform worldPointCalc2;
 
     public float speed = 0.1f;
+    public float rotationSpeed = 1f;
 
     private Vector3 targetDefaultPosition;
     private Vector3 targetDefaultRotation;
@@ -96,6 +97,19 @@ public class WorldPointController : MonoBehaviour {
             var distance = -speed * Time.deltaTime;
             target.Translate(0, 0, distance, Space.World);
             transform.Translate(0, 0, distance, Space.World);
+        }
+        if (Input.GetKey(KeyCode.Alpha7))
+        {
+            var angle = rotationSpeed * Time.deltaTime;
+            //target.RotateAround(transform.position, new Vector3(0, 1, 0), angle);// 0, angle, 0, Space.World);
+            target.Rotate(0, angle, 0, Space.World);
+            transform.RotateAround(target.position, new Vector3(0, 1, 0), angle);// 0, angle, 0, Space.World);
+        }
+        if (Input.GetKey(KeyCode.Alpha8))
+        {
+            var angle = -rotationSpeed * Time.deltaTime;
+            target.Rotate(0, angle, 0, Space.World);
+            transform.RotateAround(target.position, new Vector3(0, 1, 0), angle);// 0, angle, 0, Space.World);
         }
     }
 

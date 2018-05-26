@@ -9,6 +9,7 @@ R = ResetToTarget
 1,2 = move Registration on X
 3,4 = move Registration on Y
 5,6 = move Registration on Z
+7,8 = rotate Registration on Y
 
 
 Directional Light
@@ -16,6 +17,7 @@ Change the Rotation to change the light direction
 
 WorldPoint
 Change the Speed to change the speed of move Registration on X,Y,Z
+Change the RotationSpeed to change the speed of rotate Registration on Y
 
 CameraPointReference
 Position+Rotation relative to the center of the model.
